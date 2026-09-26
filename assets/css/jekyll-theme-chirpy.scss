@@ -1,8 +1,15 @@
-/* CSS */
+---
+---
 
-/* image */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
 
-@use 'main':
+/* =========================
+   Avatar
+   ========================= */
 
 #avatar {
   overflow: hidden;
@@ -13,5 +20,114 @@
     object-fit: cover;
     object-position: center;
   }
+}
+
+/* =========================
+   Warm Olive Theme
+   ========================= */
+
+:root {
+  --blog-sidebar: #f2e1cf;
+  --blog-background: #faf8f3;
+  --blog-card: #fffdf8;
+  --blog-card-hover: #f2ebdd;
+
+  --blog-menu-hover: #b0cbb0;
+  --blog-menu-active: #c9cead;
+
+  --blog-accent: #747b4d;
+  --blog-text: #3f3b35;
+  --blog-secondary: #777168;
+  --blog-border: #e1dacd;
+}
+
+
+/* Sidebar */
+
+#sidebar {
+  background: var(--blog-sidebar) !important;
+}
+
+
+/* Main page */
+
+body,
+#main-wrapper {
+  background: var(--blog-background);
+}
+
+
+/* Post cards */
+
+#post-list .card {
+  background: var(--blog-card);
+  border-color: var(--blog-border);
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+/* Post card hover */
+
+#post-list .card:hover {
+  background: var(--blog-card-hover);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(70, 60, 45, 0.08);
+}
+
+
+/* Sidebar menu hover */
+
+#sidebar .nav-link:hover {
+  background-color: #b0cbb0 !important;
+  color: var(--blog-text) !important;
+}
+
+/* Current sidebar menu */
+
+#sidebar .nav-link.active {
+  background-color: #b0cbb0 !important;
+  color: var(--blog-text) !important;
+}
+
+/* Links */
+
+a {
+  color: var(--blog-accent);
+}
+
+a:hover {
+  color: #596039;
+}
+
+/* =========================
+   Topbar
+   ========================= */
+
+#topbar-wrapper,
+#topbar {
+  background-color: var(--blog-background) !important;
+}
+
+
+/* =========================
+   Footer
+   ========================= */
+
+footer {
+  background-color: var(--blog-background) !important;
+}
+
+
+.btn-outline-primary:hover {
+  background-color: var(--blog-menu-hover);
+  border-color: var(--blog-menu-hover);
+  border-style: none;
+  color: #fffdf8
 }
 
