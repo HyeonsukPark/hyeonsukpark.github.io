@@ -7,7 +7,7 @@ tags: [llm evaluation, project]     # TAG names should always be lowercase
 
 # A Rule-Based Database Grounding Framework for Evaluating LLM-Generated Travel Itineraries
 
-![img-description](/assets/images/project_logo.png)
+![img-description](/assets/img/project_logo.png)
 
 ## Introduction 
 

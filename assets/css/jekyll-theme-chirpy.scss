@@ -1,5 +1,5 @@
----
----
+---  
+---  
 
 @use 'main
 {%- if jekyll.environment == 'production' -%}
@@ -22,10 +22,12 @@
   }
 }
 
+
 /* =========================
-   Warm Olive Theme
+   Warm Olive Theme Variables
    ========================= */
 
+/* Light mode */
 :root {
   --blog-sidebar: #f2e1cf;
   --blog-background: #faf8f3;
@@ -36,32 +38,84 @@
   --blog-menu-active: #c9cead;
 
   --blog-accent: #747b4d;
+  --blog-accent-hover: #596039;
+
   --blog-text: #3f3b35;
   --blog-secondary: #777168;
   --blog-border: #e1dacd;
+
+  --blog-shadow: rgba(70, 60, 45, 0.08);
 }
 
 
-/* Sidebar */
+/* Dark mode */
+html[data-bs-theme='dark'] {
+  --blog-sidebar: #20231d;
+  --blog-background: #181a17;
+  --blog-card: #242720;
+  --blog-card-hover: #2d3128;
 
-#sidebar {
-  background: var(--blog-sidebar) !important;
+  --blog-menu-hover: #46503f;
+  --blog-menu-active: #59634f;
+
+  --blog-accent: #b8c58c;
+  --blog-accent-hover: #d0d9ac;
+
+  --blog-text: #dedfd7;
+  --blog-secondary: #a6aa9f;
+  --blog-border: #3b4035;
+
+  --blog-shadow: rgba(0, 0, 0, 0.25);
 }
 
 
-/* Main page */
+/* =========================
+   Global Background
+   ========================= */
 
 body,
-#main-wrapper {
-  background: var(--blog-background);
+#main-wrapper,
+#topbar-wrapper,
+#topbar,
+footer,
+#panel-wrapper {
+  background-color: var(--blog-background) !important;
+  color: var(--blog-text);
 }
 
 
-/* Post cards */
+/* =========================
+   Sidebar
+   ========================= */
 
-#post-list .card {
-  background: var(--blog-card);
-  border-color: var(--blog-border);
+#sidebar {
+  background-color: var(--blog-sidebar) !important;
+}
+
+#sidebar .nav-link {
+  color: var(--blog-secondary);
+}
+
+#sidebar .nav-link:hover {
+  background-color: var(--blog-menu-hover) !important;
+  color: var(--blog-text) !important;
+}
+
+#sidebar .nav-link.active {
+  background-color: var(--blog-menu-active) !important;
+  color: var(--blog-text) !important;
+}
+
+
+/* =========================
+   Post Cards
+   ========================= */
+
+#post-list .card,
+#post-list .card-body,
+.post-preview {
+  background-color: var(--blog-card) !important;
+  border-color: var(--blog-border) !important;
 
   transition:
     background-color 0.2s ease,
@@ -69,49 +123,116 @@ body,
     box-shadow 0.2s ease;
 }
 
-
-/* Post card hover */
-
 #post-list .card:hover {
-  background: var(--blog-card-hover);
+  background-color: var(--blog-card-hover) !important;
   transform: translateY(-2px);
 
   box-shadow:
-    0 6px 18px rgba(70, 60, 45, 0.08);
+    0 6px 18px var(--blog-shadow);
 }
 
 
-/* Sidebar menu hover */
+/* Post title */
 
-#sidebar .nav-link:hover {
-  background-color: #b0cbb0 !important;
+#post-list .card .card-title,
+#post-list .card h1,
+#post-list .card h2,
+#post-list .card h3 {
   color: var(--blog-text) !important;
 }
 
-/* Current sidebar menu */
 
-#sidebar .nav-link.active {
-  background-color: #b0cbb0 !important;
-  color: var(--blog-text) !important;
+/* Post description */
+
+#post-list .card p,
+#post-list .card .card-text {
+  color: var(--blog-secondary) !important;
 }
 
-/* Links */
+
+/* Post metadata */
+
+#post-list .post-meta,
+#post-list .post-meta span,
+#post-list .post-meta a,
+#post-list .card .text-muted {
+  color: var(--blog-secondary) !important;
+}
+
+
+/* =========================
+   Links
+   ========================= */
 
 a {
   color: var(--blog-accent);
 }
 
 a:hover {
-  color: #596039;
+  color: var(--blog-accent-hover);
 }
 
+
 /* =========================
-   Topbar
+   Search
    ========================= */
 
-#topbar-wrapper,
-#topbar {
+#search,
+#search-input {
+  background-color: var(--blog-card) !important;
+  color: var(--blog-text) !important;
+  border-color: var(--blog-border) !important;
+}
+
+#search-input::placeholder {
+  color: var(--blog-secondary) !important;
+}
+
+
+/* =========================
+   Right Panel
+   ========================= */
+
+#panel-wrapper,
+.access {
   background-color: var(--blog-background) !important;
+}
+
+#panel-wrapper h2,
+#panel-wrapper h3,
+#panel-wrapper h4,
+.access h2,
+.access h3,
+.access h4 {
+  color: var(--blog-text) !important;
+}
+
+#panel-wrapper a,
+.access a {
+  color: var(--blog-secondary);
+}
+
+#panel-wrapper a:hover,
+.access a:hover {
+  color: var(--blog-accent);
+}
+
+
+/* =========================
+   Tags
+   ========================= */
+
+.post-tag,
+.btn-outline-primary {
+  color: var(--blog-secondary);
+  border-color: var(--blog-border);
+}
+
+.post-tag:hover,
+.btn-outline-primary:hover {
+  background-color: var(--blog-menu-hover) !important;
+  border-color: var(--blog-menu-hover) !important;
+  color: var(--blog-text) !important;
 }
 
 
@@ -120,14 +241,24 @@ a:hover {
    ========================= */
 
 footer {
-  background-color: var(--blog-background) !important;
+  color: var(--blog-secondary);
 }
 
 
-.btn-outline-primary:hover {
-  background-color: var(--blog-menu-hover);
-  border-color: var(--blog-menu-hover);
-  border-style: none;
-  color: #fffdf8
-}
+/* =========================
+   Optional Smooth Transition
+   ========================= */
 
+body,
+#sidebar,
+#main-wrapper,
+#topbar-wrapper,
+#topbar,
+#panel-wrapper,
+footer,
+#post-list .card {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
